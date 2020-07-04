@@ -1,0 +1,13 @@
+@import '~antd/dist/antd.css';
+.Header {
+   width: 100%;
+   height: 64px;
+   padding: 0 50px;
+   background: #001529;
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+}
+.Header-button {
+   border-radius: 5px;
+}

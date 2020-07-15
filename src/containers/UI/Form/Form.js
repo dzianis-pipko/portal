@@ -5,10 +5,30 @@ import {
    Button
 } from 'antd';
 import './Form.css';
+import { connect } from 'react-redux';
+import { userPostFetch } from '../../../store/actions/auth';
 
 
 
-export default class Forms extends Component {
+class Forms extends Component {
+
+   state = {
+      email: '',
+      password: ''
+   }
+
+   handleChange = event => {
+      this.setState({
+         [event.target.name]: event.target.value
+      });
+   }
+
+   handleSubmit = e => {
+      // e.preventDefault()
+      // console.log('HendleSubmit', event);
+      this.props.userPostFetch(this.state)
+   }
+
    render() {
       const tailFormItemLayout = {
          wrapperCol: {
@@ -24,7 +44,7 @@ export default class Forms extends Component {
       };
       return (
          <Form
-
+            onFinish={(e) => this.handleSubmit(e)}
             scrollToFirstError
          >
             <Form.Item
@@ -42,7 +62,13 @@ export default class Forms extends Component {
                   },
                ]}
             >
-               <Input className="input" />
+               <Input
+                  className="input"
+                  name='email'
+                  placeholder='email'
+                  value={this.state.email}
+                  onChange={this.handleChange}
+               />
             </Form.Item>
 
             <Form.Item
@@ -57,7 +83,13 @@ export default class Forms extends Component {
                ]}
                hasFeedback
             >
-               <Input.Password />
+               <Input.Password
+                  type='password'
+                  name='password'
+                  placeholder='Password'
+                  value={this.state.password}
+                  onChange={this.handleChange}
+               />
             </Form.Item>
             <Form.Item {...tailFormItemLayout}>
                <Button className="Header-button" type="primary" htmlType="submit">
@@ -68,3 +100,11 @@ export default class Forms extends Component {
       )
    }
 }
+
+function mapDispatchToProps(dispatch) {
+   return {
+      userPostFetch: (userInfo) => dispatch(userPostFetch(userInfo))
+   }
+}
+
+export default connect(null, mapDispatchToProps)(Forms)

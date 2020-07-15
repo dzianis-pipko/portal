@@ -1,0 +1,18 @@
+.Header-button {
+   border-radius: 5px;
+}
+.ant-col.ant-form-item-control.ant-col-xs-24.ant-col-xs-offset-0.ant-col-sm-16.ant-col-sm-offset-8 {
+   margin-left: 0px;
+}
+.ant-form-item-control {
+   display: flex;
+   flex-direction: column;
+   width: 320px;
+}
+
+.ant-form-horizontal .ant-form-item-control {
+   flex: none;
+}
+.FormItem {
+   justify-content: flex-end;
+}

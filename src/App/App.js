@@ -13,7 +13,7 @@ export default class App extends Component {
             <Sidebar />
             <Layout>
                <Header />
-               <Content style={{ margin: '24px 16px 0' }}>
+               <Content style={{ margin: '24px 40px 0' }}>
                   <Users />
                </Content>
             </Layout>

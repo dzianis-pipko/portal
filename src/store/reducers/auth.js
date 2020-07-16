@@ -4,7 +4,7 @@ const initialState = {
    currentUser: {}
 }
 
-export default function reducer(state = initialState, action) {
+export default function authReducer(state = initialState, action) {
    switch (action.type) {
       case LOGIN_USER:
          return { ...state, currentUser: action.payload }

@@ -5,8 +5,9 @@ import App from './App/App';
 import * as serviceWorker from './serviceWorker';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './store/reducers/auth';
+import rootReducer from './store/reducers/rootReducer';
 import thunk from 'redux-thunk';
+import { BrowserRouter } from 'react-router-dom'
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -15,18 +16,20 @@ const composeEnhancers =
     }) : compose;
 
 const store = createStore(
-  reducer,
+  rootReducer,
   composeEnhancers(
     applyMiddleware(thunk)
   )
 )
 
 ReactDOM.render(
-  <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Provider>,
+  <BrowserRouter>
+    <Provider store={store}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

@@ -4,9 +4,10 @@ import './Loader.css'
 const Loader = () => {
    return (
       <div className="loader-wrapper">
-         <div class="lds-ripple">
-            <div />
-            <div />
+         <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
          </div>
       </div>
    )

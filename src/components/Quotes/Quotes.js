@@ -4,10 +4,14 @@ import { Table, Space } from 'antd'
 import { connect } from 'react-redux'
 import Loader from '../../containers/UI/Loader/Loader'
 import { fetchQuotes } from '../../store/actions/quotes'
+import ModalsQuotes from '../../containers/UI/ModalsQuotes/ModalsQuotes'
 
 class Quotes extends Component {
    componentDidMount() {
       this.props.fetchQuotes()
+   }
+   deleteQuote = () => {
+      this.props.deleteQuote()
    }
    render() {
       const columns = [
@@ -26,7 +30,7 @@ class Quotes extends Component {
             key: 'action',
             render: (text, record) => (
                <Space size="middle">
-                  <p style={{ cursor: 'pointer', margin: 0 }}>Delete</p>
+                  <p onClick={this.deleteQuote} style={{ cursor: 'pointer', margin: 0 }}>Delete</p>
                </Space>
             ),
          },
@@ -36,7 +40,11 @@ class Quotes extends Component {
             {
                this.props.loader && this.props.quotesArray.length !== 0
                   ? <Loader />
-                  : <Table columns={columns} dataSource={this.props.quotesArray} bordered />
+                  :
+                  <div>
+                     <ModalsQuotes />
+                     <Table columns={columns} dataSource={this.props.quotesArray} bordered />
+                  </div>
             }
          </React.Fragment>
       )
@@ -51,7 +59,8 @@ const mapSateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
    return {
-      fetchQuotes: () => dispatch(fetchQuotes())
+      fetchQuotes: () => dispatch(fetchQuotes()),
+      // deleteQuote: () => dispatch(deleteQuote())
    }
 }
 export default connect(mapSateToProps, mapDispatchToProps)(Quotes);

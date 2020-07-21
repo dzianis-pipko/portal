@@ -34,8 +34,7 @@ export default class ModalsQuotes extends Component {
             <Modal
                title="Create quote"
                visible={this.state.visible}
-               // onOk={this.handleOk}
-               // onCancel={this.handleCancel}
+               onCancel={this.handleCancel}
                footer={null}
             >
                <FormQuotes onOk={this.handleOk} />

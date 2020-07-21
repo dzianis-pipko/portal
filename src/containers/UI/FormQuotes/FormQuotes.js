@@ -7,10 +7,6 @@ import {
 import './FormQuotes.css';
 import { connect } from 'react-redux';
 import { quotesPostFetch } from '../../../store/actions/quotesCreate';
-// import { fetchQuotes } from '../../../store/actions/quotes'
-
-
-
 
 class FormQuotes extends Component {
 
@@ -26,11 +22,8 @@ class FormQuotes extends Component {
    }
 
    handleSubmit = e => {
-      // e.preventDefault()
-      // console.log('HendleSubmit', event);
       this.props.quotesPostFetch(this.state)
-      this.props.onOk
-      // this.props.fetchQuotes()
+      this.props.onOk()
    }
 
    render() {
@@ -101,8 +94,7 @@ class FormQuotes extends Component {
 
 function mapDispatchToProps(dispatch) {
    return {
-      quotesPostFetch: (userInfo) => dispatch(quotesPostFetch(userInfo)),
-      // fetchQuotes: () => dispatch(fetchQuotes())
+      quotesPostFetch: (userInfo) => dispatch(quotesPostFetch(userInfo))
    }
 }
 

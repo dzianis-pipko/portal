@@ -12,8 +12,8 @@ class Quotes extends Component {
       this.props.fetchQuotes()
    }
    confirm = (id) => {
+      this.props.quotesDeleteFetch(id.key)
       message.success('Цитата удалена успешно');
-      this.props.quotesDeleteFetch(id)
    }
    render() {
       const columns = [
@@ -29,11 +29,11 @@ class Quotes extends Component {
          },
          {
             title: 'Action',
-            key: _id,
+            key: 'key',
             render: (id) => (
                <Popconfirm
                   title="Are you sure delete this quote?"
-                  onConfirm={this.confirm(id)}
+                  onConfirm={() => this.confirm(id)}
                   okText="Yes"
                   cancelText="No"
                >
@@ -67,7 +67,7 @@ const mapSateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
    return {
       fetchQuotes: () => dispatch(fetchQuotes()),
-      quotesDeleteFetch: () => dispatch(quotesDeleteFetch())
+      quotesDeleteFetch: (id) => dispatch(quotesDeleteFetch(id))
    }
 }
 export default connect(mapSateToProps, mapDispatchToProps)(Quotes);

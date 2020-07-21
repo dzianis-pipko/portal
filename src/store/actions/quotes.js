@@ -14,7 +14,6 @@ export function fetchQuotes() {
                quote: item.text
             })
          })
-         console.log('FETCH-QUOTES', response.data);
          dispatch(fetchQuotesSuccess(newQuotesArray))
       } catch (e) {
          dispatch(fetchQuotesError(e))

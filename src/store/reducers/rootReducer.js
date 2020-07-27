@@ -5,6 +5,7 @@ import leedsReducer from './leeds'
 import quotesReducer from './quotes'
 import quotesPostReducer from './quotesCreate'
 import quotesDeleteReducer from './quotesDelete'
+import quotesPatchReducer from './quotesPatch'
 
 
 export default combineReducers({
@@ -13,6 +14,7 @@ export default combineReducers({
    leeds: leedsReducer,
    quotes: quotesReducer,
    quotesPost: quotesPostReducer,
-   quotesDelete: quotesDeleteReducer
+   quotesDelete: quotesDeleteReducer,
+   quotesPatch: quotesPatchReducer
 })
 

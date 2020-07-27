@@ -11,7 +11,7 @@ export function fetchQuotes() {
             return newQuotesArray.push({
                key: item._id,
                author: item.author,
-               quote: item.text
+               text: item.text
             })
          })
          dispatch(fetchQuotesSuccess(newQuotesArray))

@@ -7,6 +7,7 @@ import quotesPostReducer from './quotesCreate'
 import quotesDeleteReducer from './quotesDelete'
 import quotesPatchReducer from './quotesPatch'
 import tasksReducers from './tasks'
+import tasksPostReducer from './tasksCreate'
 
 
 
@@ -18,6 +19,7 @@ export default combineReducers({
    quotesPost: quotesPostReducer,
    quotesDelete: quotesDeleteReducer,
    quotesPatch: quotesPatchReducer,
-   tasks: tasksReducers
+   tasks: tasksReducers,
+   tasksPost: tasksPostReducer
 })
 

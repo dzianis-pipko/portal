@@ -4,6 +4,7 @@ import { Table } from 'antd'
 import { connect } from 'react-redux'
 import Loader from '../../containers/UI/Loader/Loader'
 import { fetchTasks } from '../../store/actions/tasks'
+import ModalsTasks from '../../containers/UI/ModalsTasks/ModalsTasks'
 
 class Tasks extends Component {
    componentDidMount() {
@@ -24,25 +25,16 @@ class Tasks extends Component {
          },
       ];
 
-      // const data = [
-      //    {
-      //       key: '1',
-      //       theme: 'John Brown',
-      //       text: 'New York No. 1 Lake Park',
-      //    },
-      //    {
-      //       key: '2',
-      //       theme: 'Jim Green',
-      //       text: 'London No. 1 Lake Park',
-      //    },
-      // ];
-
       return (
          <React.Fragment>
             {
                this.props.loader
                   ? <Loader />
-                  : <Table columns={columns} dataSource={this.props.currentTasks} />
+                  :
+                  <div>
+                     <ModalsTasks />
+                     <Table columns={columns} dataSource={this.props.currentTasks} />
+                  </div>
             }
          </React.Fragment>
       )

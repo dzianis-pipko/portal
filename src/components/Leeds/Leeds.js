@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Leeds.css';
 import { Table } from 'antd';
-import axios from 'axios'
 import Loader from '../../containers/UI/Loader/Loader'
 import { connect } from 'react-redux'
 import { fetchLeeds } from '../../store/actions/leeds'

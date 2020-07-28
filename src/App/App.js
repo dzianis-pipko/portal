@@ -7,7 +7,7 @@ import Users from '../components/Users/Users';
 import Leeds from '../components/Leeds/Leeds'
 import Quotes from '../components/Quotes/Quotes'
 import Tasks from '../components/Tasks/Tasks'
-import CheatSheet from '../components/CheatSheet/CheatSheet'
+import CheatSheetTab from '../components/CheatSheetTab/CheatSheetTab'
 import Login from '../components/Login/Login'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
@@ -26,7 +26,7 @@ export default class App extends Component {
                      <Route path="/leeds" component={Leeds} />
                      <Route path="/quotes" component={Quotes} />
                      <Route path="/tasks" component={Tasks} />
-                     <Route path="/cheatSheet" component={CheatSheet} />
+                     <Route path="/cheatSheet" component={CheatSheetTab} />
                      <Redirect to="/users" />
                   </Switch>
                </Content>

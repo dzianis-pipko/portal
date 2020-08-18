@@ -2,30 +2,34 @@ import React, { Component } from 'react';
 import {
    Form,
    Input,
-   Button
+   Button,
+   Upload
 } from 'antd'
 import { connect } from 'react-redux'
-import { tasksPostFetch } from '../../../store/actions/tasksCreate'
+import { UploadOutlined } from '@ant-design/icons';
+import { fetchCheatSheetSectionsPost } from '../../../store/actions/CheatSheetSectionsCreate'
 
 class FormCheatSheetSections extends Component {
 
-   state = {
-      theme: '',
-      text: ''
-   }
-
-   handleChange = event => {
-      this.setState({
-         [event.target.name]: event.target.value
-      });
-   }
-
    handleSubmit = e => {
-      this.props.tasksPostFetch(this.state)
+      console.log("E", e);
+      this.props.fetchCheatSheetSectionsPost(e)
       this.props.onOk()
    }
 
+   normFile = e => {
+      console.log('Upload event:', e);
+
+      if (Array.isArray(e)) {
+         return e;
+      }
+
+      return e && e.fileList;
+
+   };
+
    render() {
+
       const tailFormItemLayout = {
          wrapperCol: {
             xs: {
@@ -38,6 +42,7 @@ class FormCheatSheetSections extends Component {
             },
          },
       };
+
       return (
          <Form
             onFinish={(e) => this.handleSubmit(e)}
@@ -45,45 +50,64 @@ class FormCheatSheetSections extends Component {
          >
             <Form.Item
                className="FormItem"
-               name="theme"
-               label="Theme:"
+               name="title"
+               label="Title:"
                rules={[
                   {
                      required: true,
-                     message: 'Please enter theme!'
+                     message: 'Please enter title!'
                   },
                ]}
             >
                <Input
                   className="input"
-                  name='theme'
-                  placeholder='input theme'
-                  value={this.state.theme}
-                  onChange={this.handleChange}
+                  name='title'
+                  placeholder='input title'
                />
             </Form.Item>
             <Form.Item
                className="FormItem"
-               name="text"
-               label="Task:"
-               rules={[
-                  {
-                     required: true,
-                     message: 'Please input your task!'
-                  },
-               ]}
+               name="logo"
+               label="Logo"
+               valuePropName="fileList[0].response.imageUrl"
+               getValueFromEvent={this.normFile}
+               extra="PNG"
             >
-               <Input
-                  className="input"
-                  name='text'
-                  placeholder='input task'
-                  value={this.state.text}
-                  onChange={this.handleChange}
-               />
+               <Upload
+                  name="image"
+                  action="https://redevcrm.herokuapp.com/upload"
+                  listType="picture"
+                  accept=""
+               >
+                  <Button>
+                     <UploadOutlined /> Upload photo
+                  </Button>
+               </Upload>
             </Form.Item>
+            <Form.Item
+               className="FormItem"
+               name="image"
+               label="Image"
+               valuePropName="fileList[0].response.imageUrl"
+               getValueFromEvent={this.normFile}
+               extra="PNG"
+            >
+               <Upload
+                  name="image"
+                  action="https://redevcrm.herokuapp.com/upload"
+                  listType="picture"
+                  accept=""
+               >
+                  <Button>
+                     <UploadOutlined /> Upload photo
+                  </Button>
+               </Upload>
+            </Form.Item>
+
+
             <Form.Item {...tailFormItemLayout}>
                <Button className="Header-button" type="primary" htmlType="submit">
-                  Create
+                  Create cheat sheet
                </Button>
             </Form.Item>
          </Form>
@@ -93,7 +117,7 @@ class FormCheatSheetSections extends Component {
 
 function mapDispatchToProps(dispatch) {
    return {
-      tasksPostFetch: (userInfo) => dispatch(tasksPostFetch(userInfo))
+      fetchCheatSheetSectionsPost: (userInfo) => dispatch(fetchCheatSheetSectionsPost(userInfo))
    }
 }
 

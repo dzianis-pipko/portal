@@ -8,6 +8,8 @@ import quotesDeleteReducer from './quotesDelete'
 import quotesPatchReducer from './quotesPatch'
 import tasksReducers from './tasks'
 import tasksPostReducer from './tasksCreate'
+import CheatSheetSectionsReducer from './CheatSheetSections'
+import CheatSheetSectionsPostReducer from './CheatSheetSectionsCreate'
 
 
 
@@ -20,6 +22,8 @@ export default combineReducers({
    quotesDelete: quotesDeleteReducer,
    quotesPatch: quotesPatchReducer,
    tasks: tasksReducers,
-   tasksPost: tasksPostReducer
+   tasksPost: tasksPostReducer,
+   cheatSheetSections: CheatSheetSectionsReducer,
+   CheatSheetSectionsPost: CheatSheetSectionsPostReducer
 })
 

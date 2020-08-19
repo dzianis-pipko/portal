@@ -10,6 +10,9 @@ import tasksReducers from './tasks'
 import tasksPostReducer from './tasksCreate'
 import CheatSheetSectionsReducer from './CheatSheetSections'
 import CheatSheetSectionsPostReducer from './CheatSheetSectionsCreate'
+import CheatSheetThemeReducer from './CheatSheetThemes'
+import CheatSheetThemesCreateReducer from './CheatSheetThemesCreate'
+import renderOptionsReducer from './renderOptions'
 
 
 
@@ -24,6 +27,9 @@ export default combineReducers({
    tasks: tasksReducers,
    tasksPost: tasksPostReducer,
    cheatSheetSections: CheatSheetSectionsReducer,
-   CheatSheetSectionsPost: CheatSheetSectionsPostReducer
+   CheatSheetSectionsPost: CheatSheetSectionsPostReducer,
+   CheatSheetTheme: CheatSheetThemeReducer,
+   CheatSheetThemesCreate: CheatSheetThemesCreateReducer,
+   renderOptions: renderOptionsReducer
 })
 

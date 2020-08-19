@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { FETCH_CHEAT_SHEET_SECTION_POST_SUCCESS } from './actionTypes'
 import { fetchCheatSheetSections } from './CheatSheetSections'
+import { fetchRenderOptions } from './renderOptions'
 
 export const fetchCheatSheetSectionsPost = ({ title, logo, image }) => {
    return async dispatch => {
@@ -14,6 +15,7 @@ export const fetchCheatSheetSectionsPost = ({ title, logo, image }) => {
          console.log(response.data);
          dispatch(CheatSheetSectionsPost(response.data))
          dispatch(fetchCheatSheetSections())
+         dispatch(fetchRenderOptions())
 
       } catch (e) {
          console.log(e);

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Sidebar.css';
 import { Layout, Menu } from 'antd';
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+
 
 const links = [
    { to: '/users', label: 'Users', exact: false },
@@ -27,6 +29,21 @@ class Sidebar extends Component {
    }
    render() {
       const { Sider } = Layout
+
+      const token = localStorage.token;
+
+      const renderLoginLogoutLinks = () => {
+         if (token) {
+            return (
+               <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+                  {this.renderLinks()}
+               </Menu>
+            )
+         } else {
+            return null
+         }
+
+      }
       return (
          <React.Fragment>
             <Sider
@@ -40,12 +57,15 @@ class Sidebar extends Component {
                }}
             >
                <div className="logo" />
-               <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-                  {this.renderLinks()}
-               </Menu>
+               {renderLoginLogoutLinks()}
             </Sider>
          </React.Fragment>
       )
    }
 }
-export default Sidebar
+
+const mapStateToProps = state => ({
+   currentUser: state.auth.currentUser
+})
+
+export default connect(mapStateToProps)(Sidebar)

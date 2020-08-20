@@ -39,7 +39,7 @@ export default class Modals extends Component {
                onCancel={this.handleCancel}
                footer={null}
             >
-               <Forms />
+               <Forms onOk={this.handleOk} />
             </Modal>
          </div>
       );

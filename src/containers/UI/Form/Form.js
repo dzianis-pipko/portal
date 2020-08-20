@@ -27,6 +27,7 @@ class Forms extends Component {
       // e.preventDefault()
       // console.log('HendleSubmit', event);
       this.props.userPostFetch(this.state)
+      this.props.onOk()
    }
 
    render() {

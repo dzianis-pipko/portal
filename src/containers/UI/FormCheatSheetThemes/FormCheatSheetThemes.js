@@ -14,7 +14,7 @@ import RenderOptions from '../RenderOptions/RenderOptions'
 class FormCheatSheetThemes extends Component {
 
    handleSubmit = e => {
-      console.log("E", e);
+      // console.log("E", e);
       this.props.fetchCheatSheetThemesCreate(e)
       this.props.onOk()
    }

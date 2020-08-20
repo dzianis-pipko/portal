@@ -10,10 +10,33 @@ import Tasks from '../components/Tasks/Tasks'
 import CheatSheetTab from '../components/CheatSheetTab/CheatSheetTab'
 import Login from '../components/Login/Login'
 import { Route, Switch, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-export default class App extends Component {
+class App extends Component {
    render() {
       const { Content } = Layout;
+      const token = localStorage.token;
+      const loginLogout = () => {
+         if (token) {
+            return (
+               <React.Fragment>
+                  <Route path="/users" component={Users} />
+                  <Route path="/leeds" component={Leeds} />
+                  <Route path="/quotes" component={Quotes} />
+                  <Route path="/tasks" component={Tasks} />
+                  <Route path="/cheatSheet" component={CheatSheetTab} />
+                  <Redirect to="/users" />
+               </React.Fragment>
+            )
+         } else {
+            return (
+               <React.Fragment>
+                  <Route path="/" component={Login} />
+                  <Redirect to="/" />
+               </React.Fragment>
+            )
+         }
+      }
       return (
          <Layout>
             <Sidebar />
@@ -21,13 +44,7 @@ export default class App extends Component {
                <Header />
                <Content style={{ margin: '24px 40px 0' }}>
                   <Switch>
-                     <Route path="/login" component={Login} />
-                     <Route path="/users" component={Users} />
-                     <Route path="/leeds" component={Leeds} />
-                     <Route path="/quotes" component={Quotes} />
-                     <Route path="/tasks" component={Tasks} />
-                     <Route path="/cheatSheet" component={CheatSheetTab} />
-                     <Redirect to="/users" />
+                     {loginLogout()}
                   </Switch>
                </Content>
             </Layout>
@@ -35,3 +52,9 @@ export default class App extends Component {
       )
    }
 }
+
+const mapStateToProps = state => ({
+   currentUser: state.auth.currentUser
+})
+
+export default connect(mapStateToProps)(App)

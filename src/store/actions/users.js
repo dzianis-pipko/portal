@@ -9,7 +9,7 @@ export function fetchUsers() {
          const tableUsers = []
          response.data.map(item => {
             return tableUsers.push({
-               key: item.id,
+               key: item._id,
                firstName: item.firstName,
                email: item.email,
                birthday: item.birthday,

@@ -8,6 +8,7 @@ export const fetchRenderOptions = () => {
          const newRenderOptionsArray = []
          response.data.map(item => {
             return newRenderOptionsArray.push({
+               key: item._id,
                id: item._id,
                title: item.title
             })

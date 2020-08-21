@@ -3,8 +3,7 @@ import {
    Form,
    Input,
    Button,
-   Upload,
-   Select
+   Upload
 } from 'antd'
 import { connect } from 'react-redux'
 import { UploadOutlined } from '@ant-design/icons';
@@ -14,7 +13,6 @@ import RenderOptions from '../RenderOptions/RenderOptions'
 class FormCheatSheetThemes extends Component {
 
    handleSubmit = e => {
-      // console.log("E", e);
       this.props.fetchCheatSheetThemesCreate(e)
       this.props.onOk()
    }
